@@ -6,7 +6,7 @@ We are now only supporting the use of our CircuitPython libraries for use with P
 
 Check out this guide for info on using character LCDs with the CircuitPython library:
 
-      https://github.com/adafruit/Adafruit_CircuitPython_ADS1x15
+"https://github.com/adafruit/Adafruit_CircuitPython_ADS1x15"
 
 
 
