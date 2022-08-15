@@ -1,18 +1,12 @@
-# requires RPi_I2C_driver.py
-import RPi_I2C_driver
+import Rpi_i2c_driver
 from time import *
+mylcd = Rpi_i2c_driver.lcd()
 
-mylcd = RPi_I2C_driver.lcd()
-# test 2
 mylcd.lcd_display_string("RPi I2C test", 1)
 mylcd.lcd_display_string(" Custom chars", 2)
-
-sleep(2) # 2 sec delay
-
+sleep(2)
 mylcd.lcd_clear()
 
-# let's define a custom icon, consisting of 6 individual characters
-# 3 chars in the first row and 3 chars in the second row
 fontdata1 = [
         # Char 0 - Upper-left
         [ 0x00, 0x00, 0x03, 0x04, 0x08, 0x19, 0x11, 0x10 ],
@@ -27,54 +21,24 @@ fontdata1 = [
         # Char 5 - Lower-right
         [ 0x09, 0x19, 0x1b, 0x12, 0x04, 0x18, 0x00, 0x00 ],
         # Char 6 - my test
-	[ 0x1f,0x0,0x4,0xe,0x0,0x1f,0x1f,0x1f],
+        [ 0x1f,0x0,0x4,0xe,0x0,0x1f,0x1f,0x1f],
 ]
-
-# Load logo chars (fontdata1)
 mylcd.lcd_load_custom_chars(fontdata1)
-
-
-# Write first three chars to row 1 directly
 mylcd.lcd_write(0x80)
 mylcd.lcd_write_char(0)
 mylcd.lcd_write_char(1)
 mylcd.lcd_write_char(2)
-# Write next three chars to row 2 directly
 mylcd.lcd_write(0xC0)
 mylcd.lcd_write_char(3)
 mylcd.lcd_write_char(4)
 mylcd.lcd_write_char(5)
 sleep(2)
-
 mylcd.lcd_clear()
 
 mylcd.lcd_display_string_pos("Testing",1,1) # row 1, column 1
-sleep(1)
 mylcd.lcd_display_string_pos("Testing",2,3) # row 2, column 3
-sleep(1)
-mylcd.lcd_clear()
-
-# Now let's define some more custom characters
-fontdata2 = [
-        # Char 0 - left arrow
-        [ 0x1,0x3,0x7,0xf,0xf,0x7,0x3,0x1 ],
-        # Char 1 - left one bar 
-        [ 0x10,0x10,0x10,0x10,0x10,0x10,0x10,0x10 ],
-        # Char 2 - left two bars
-        [ 0x18,0x18,0x18,0x18,0x18,0x18,0x18,0x18 ],
-        # Char 3 - left 3 bars
-        [ 0x1c,0x1c,0x1c,0x1c,0x1c,0x1c,0x1c,0x1c ],
-        # Char 4 - left 4 bars
-        [ 0x1e,0x1e,0x1e,0x1e,0x1e,0x1e,0x1e,0x1e ],
-        # Char 5 - left start
-        [ 0x0,0x1,0x3,0x7,0xf,0x1f,0x1f,0x1f ],
-        # Char 6 - 
-        # [ ],
-]
-
-# Load logo chars from the second set
-mylcd.lcd_load_custom_chars(fontdata2)
 sleep(2)
+
 mylcd.lcd_clear()
 sleep(1)
 mylcd.backlight(0)
