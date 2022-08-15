@@ -11,5 +11,7 @@ Check out this guide for info on using character LCDs with the CircuitPython lib
 INSTALL
 
 git clone "git@github.com:carlosgallol/librerias.git"
+
 cd librerias/Ads1115
+
 sudo python setup.py install
