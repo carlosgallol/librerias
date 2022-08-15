@@ -1,11 +1,18 @@
+# EXAMPLE
+
 import Rpi_i2c_driver
 from time import *
+
 mylcd = Rpi_i2c_driver.lcd()
 
-mylcd.lcd_display_string("RPi I2C test", 1)
-mylcd.lcd_display_string(" Custom chars", 2)
+mylcd.message1("Testing", 1)
+mylcd.message1("Testing", 2)
+sleep(3)
+mylcd.clear()
+mylcd.message2("Testing", 1, 1) # row 1, column 1
+mylcd.message2("Testing", 2, 1) # row 2, column 3
 sleep(2)
-mylcd.lcd_clear()
+mylcd.clear()
 
 fontdata1 = [
         # Char 0 - Upper-left
@@ -33,13 +40,9 @@ mylcd.lcd_write_char(3)
 mylcd.lcd_write_char(4)
 mylcd.lcd_write_char(5)
 sleep(2)
-mylcd.lcd_clear()
+mylcd.clear()
 
-mylcd.lcd_display_string_pos("Testing",1,1) # row 1, column 1
-mylcd.lcd_display_string_pos("Testing",2,3) # row 2, column 3
-sleep(2)
-
-mylcd.lcd_clear()
 sleep(1)
 mylcd.backlight(0)
+
 
